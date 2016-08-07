@@ -1,0 +1,33 @@
+{
+  "name": "fscore",
+  "version": "1.0.0",
+  "description": "Nodejs F1 score (also called F-score or F-measure)",
+  "main": "lib/fscore.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piercus/fscore.git"
+  },
+  "keywords": [
+    "fscore",
+    "F1",
+    "score",
+    "F-score",
+    "F-measure",
+    "precision",
+    "recall"
+  ],
+  "author": "Pierre Colle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piercus/fscore/issues"
+  },
+  "homepage": "https://github.com/piercus/fscore#readme",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-vows": "^0.4.2",
+    "vows": "^0.8.1"
+  }
+}
