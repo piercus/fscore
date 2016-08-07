@@ -20,7 +20,7 @@ vows.describe('Fscore testing').addBatch({
       assert.isTrue(res == 1, "output should be 1 and is "+res);
     }
   },
-  "3 elements arrays are same but in different order" : {
+  "4 elements arrays are same but in different order" : {
     topic : function(){
       return fscore([22, 34, 55, 52], [34, 55, 52, 22]);
     },
@@ -50,6 +50,22 @@ vows.describe('Fscore testing').addBatch({
     },
     "when different, fscore is 0" : function(res){
       assert.isTrue(res == 0, "output should be 0 and is "+res);
+    }
+  },
+  "5 elements array vs 10 element array are partially different" : {
+    topic : function(){
+      return fscore([22, 34, 55, 52, 56, 79, 123, 678, 89, 567], [34, 55, 22, 33, 45]);
+    },
+    "when partially different, fscore is 0" : function(res){
+      assert.isTrue(res == 0.4, "output should be 0.4 and is "+res);
+    }
+  },
+  "5 elements array vs 10 element array are partially different with beta = 0.5" : {
+    topic : function(){
+      return fscore([22, 34, 55, 52, 56], [34, 55, 22, 33, 45], { beta : 0.5 });
+    },
+    "when partially different, fscore is 0" : function(res){
+      assert.isTrue(res == 0.6, "output should be 0.6 and is "+res);
     }
   }
 }).export(module);

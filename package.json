@@ -4,7 +4,7 @@
   "description": "Nodejs F1 score (also called F-score or F-measure)",
   "main": "lib/fscore.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt vows"
   },
   "repository": {
     "type": "git",

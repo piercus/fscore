@@ -16,8 +16,8 @@ npm install fscore
 ```javascript
 var fscore = require("fscore");
 
-fscore([22, 34, 55, 52], [34, 55, 22, 33]);
-// return xxxx
+fscore([22, 34, 55, 52, 56, 79, 123, 678, 89, 567], [34, 55, 22, 33, 45]);
+// -> 0.4
 ```
 
 ### with tolerance
@@ -25,14 +25,14 @@ fscore([22, 34, 55, 52], [34, 55, 22, 33]);
 ```javascript
 var fscore = require("fscore");
 
-fscore([22, 34, 55, 52], [34.1, 55.3, 22, 33], { tolerance : 0.2 });
-// return xxxx
+fscore([22, 34, 55, 52, 56, 79, 123, 678, 89, 567], [34.2, 55.1, 21.9, 32.8, 45.1], { tolerance : 0.2 });
+// returns 0.4
 ```
 ### F-Beta score
 
 ```javascript
 var fscore = require("fscore");
 
-fscore([22, 34, 55, 52], [34, 55, 22, 33], { beta : 0.5 });
-// return xxxx
+fscore([22, 34, 55, 52, 56], [34, 55, 22, 33, 45], { beta : 0.5 });
+// return 0.6
 ```
