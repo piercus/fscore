@@ -56,7 +56,7 @@ vows.describe('Fscore testing').addBatch({
     topic : function(){
       return fscore([22, 34, 55, 52, 56, 79, 123, 678, 89, 567], [34, 55, 22, 33, 45]);
     },
-    "when partially different, fscore is 0" : function(res){
+    "when partially different, fscore is 0.4" : function(res){
       assert.isTrue(res == 0.4, "output should be 0.4 and is "+res);
     }
   },
@@ -66,6 +66,47 @@ vows.describe('Fscore testing').addBatch({
     },
     "when partially different, fscore is 0" : function(res){
       assert.isTrue(res == 0.6, "output should be 0.6 and is "+res);
+    }
+  },
+  "5 elements array vs 10 element array are partially different with beta = 0.5 and format = 'detailed'" : {
+    topic : function(){
+      return fscore([22, 34, 55, 52, 56], [34, 55, 22, 33, 45], { beta : 0.5, format : 'detailed' });
+    },
+    "when partially different, fscore is 0" : function(res){
+      assert.isTrue(res.fscore == 0.6, "output.fscore should be 0.6 and is "+res.fscore);
+      assert.isTrue(res.tPositive == 3, "output.tPositive should be 3 and is "+res.tPositive);
+      assert.isTrue(res.recall == 0.6, "output.recall should be 0.6 and is "+res.recall);
+      assert.isTrue(res.precision == 0.6, "output.precision should be 0.6 and is "+res.precision);
+  
+    }
+  },
+  "3 string-elements arrays are same" : {
+    topic : function(){
+      return fscore(['foo', '34', '55'], ['foo', '34', '55']);
+    },
+    "when same, fscore is 1" : function(res){
+      assert.isTrue(res == 1, "output should be 1 and is "+res);
+    }
+  },
+  "5 string-elements array vs 10 element array are partially different" : {
+    topic : function(){
+      return fscore(['foo', 'bar', '55', '52', '56', '79', '123', '678', '89', '567'], ['bar', '55', 'foo', '33', '45']);
+    },
+    "when partially different, fscore is 0.4" : function(res){
+      assert.isTrue(res == 0.4, "output should be 0.4 and is "+res);
+    }
+  },
+  "3 string-elements array with tolerance, raise an issue" : {
+    topic : function(){
+      try{
+        fscore(['foo', '34', '55'], ['22.1', '33.8', '55.2'], {tolerance : 0.2});
+      } catch(err){
+        return err
+      }
+      return null
+    },
+    "error is raised" : function(err){   
+      assert.isTrue(err.message === "Tolerance is not working with type string");
     }
   }
 }).export(module);
