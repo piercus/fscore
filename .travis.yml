@@ -4,6 +4,9 @@ node_js:
   - 6
   - 8
 
+before_install:
+  - npm -g grunt
+
 deploy:
   provider: script
   skip_cleanup: true
