@@ -1,11 +1,10 @@
 language: node_js
 
 node_js: 
-  - 6
-  - 8
+  - 10
 
 before_install:
-  - npm i -g grunt npx
+  - npm i -g grunt
 
 deploy:
   provider: script
