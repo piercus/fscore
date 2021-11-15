@@ -68,9 +68,12 @@ fscore([22, 34, 55, 52, 56], [34, 55, 22, 33, 45], { beta : 0.5, format : 'detai
   * `detailed` outputs
     ```javascript
     {
-      fscore : 0.4, //the fscore, number of true positives
-      tPositive : 0.4, //the fscore, number of true positives
-      precision : 0.4, //the fscore, number of true positives
-      recall : 0.4 //the fscore, number of true positives
+      fscore : 0.4, //the fscore
+      tPositive : 2, //number of true positives
+      precision : 0.4, //precision
+      recall : 0.4, //recall
+      tPositiveIndexes: [[0, 0], [1, 1]], // indexes of true positives matches
+      fNegativeIndexes: [2, 3],// indexes of false negatives
+      fPositiveIndexes: [2, 3] // indexes of false positives
     }
     ```
