@@ -77,7 +77,10 @@ vows.describe('Fscore testing').addBatch({
       assert.isTrue(res.tPositive == 3, "output.tPositive should be 3 and is "+res.tPositive);
       assert.isTrue(res.recall == 0.6, "output.recall should be 0.6 and is "+res.recall);
       assert.isTrue(res.precision == 0.6, "output.precision should be 0.6 and is "+res.precision);
-  
+      assert.isTrue(res.tPositiveIndexes.toString() == [[0,2],[1,0],[2,1]].toString(), "output.tPositiveIndexes should be [[0,2],[1,0],[2,1]] and is "+res.tPositiveIndexes);
+      assert.isTrue(res.fNegativeIndexes.toString() == [3,4].toString(), "output.fNegativesIndexes should be [3,4] and is "+res.fNegativesIndexes);
+      assert.isTrue(res.fPositiveIndexes.toString() == [3,4].toString(), "output.fPositivesIndexes should be [3,4] and is "+res.fPositivesIndexes);
+
     }
   },
   "3 string-elements arrays are same" : {
